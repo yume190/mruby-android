@@ -7,4 +7,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "MRuby"
-include ':lib'
+include ':mruby'

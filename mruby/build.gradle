@@ -1,10 +1,12 @@
 plugins {
     id 'com.android.library'
-    id 'maven-publish'
+//    id 'maven-publish'
+    id  'kotlin-android'
+    id  'kotlin-android-extensions'
 }
 
 android {
-    compileSdk 25
+    compileSdk 31
     ndkVersion "23.0.7599858"
 
 
@@ -14,6 +16,10 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
+
+        ndk {
+            moduleName "mruby"
+        }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -31,11 +37,17 @@ android {
         }
     }
 
+    packagingOptions {
+        doNotStrip "**/*.so"
+    }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
         }
         debug {
             minifyEnabled false
@@ -60,28 +72,28 @@ dependencies {
 
 // Because the components are created only during the afterEvaluate phase, you must
 // configure your publications using the afterEvaluate() lifecycle method.
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                // Applies the component for the release build variant.
-                from components.release
-
-                // You can then customize attributes of the publication as shown below.
-                groupId = 'com.yume190.mruby'
-                artifactId = 'final'
-                version = '0.0.2'
-            }
-            // Creates a Maven publication called “debug”.
-            debug(MavenPublication) {
-                // Applies the component for the debug build variant.
-                from components.debug
-
-                groupId = 'com.yume190.mruby'
-                artifactId = 'final-debug'
-                version = '0.0.2'
-            }
-        }
-    }
-}
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            // Creates a Maven publication called "release".
+//            release(MavenPublication) {
+//                // Applies the component for the release build variant.
+//                from components.release
+//
+//                // You can then customize attributes of the publication as shown below.
+//                groupId = 'com.yume190.mruby'
+//                artifactId = 'final'
+//                version = '0.0.2'
+//            }
+//            // Creates a Maven publication called “debug”.
+//            debug(MavenPublication) {
+//                // Applies the component for the debug build variant.
+//                from components.debug
+//
+//                groupId = 'com.yume190.mruby'
+//                artifactId = 'final-debug'
+//                version = '0.0.2'
+//            }
+//        }
+//    }
+//}

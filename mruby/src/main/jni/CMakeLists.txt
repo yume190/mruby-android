@@ -10,16 +10,6 @@ include_directories(
     "CMRuby/include/mruby"
 )
 
-# set(distribution_DIR ${CMAKE_SOURCE_DIR}/jniLibs/${ANDROID_ABI})
-
-# add_library(dabforex SHARED IMPORTED)
-# set_target_properties(dabforex PROPERTIES IMPORTED_LOCATION
-#     ${distribution_DIR}/libdablibforexpartner.so)
-
-# add_library(dabforamaryllo SHARED IMPORTED)
-# set_target_properties(dabforamaryllo PROPERTIES IMPORTED_LOCATION
-#     ${distribution_DIR}/libdabcontroller.so)
-
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fexceptions")
 
 add_library(
@@ -68,9 +58,6 @@ add_library(
 # Include libraries needed for hello-jni lib
 target_link_libraries(
     mruby
-#    dabcontrollerdemo
-#    dabforamaryllo
-#    dabforex
 
     android
     ${log-lib}

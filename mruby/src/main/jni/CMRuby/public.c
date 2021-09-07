@@ -39,8 +39,8 @@ mrb_final_mrbgems(mrb_state *mrb)
 //    return a+b;
 //}
 
-JNIEXPORT jobjectArray JNICALL
-Java_com_yume190_mruby_Lib_compile(JNIEnv *env, jclass clz, jstring code, jboolean remove_lv) {
+JNIEXPORT jbyteArray JNICALL
+Java_com_yume190_mruby_MRuby_compile(JNIEnv *env, jclass clazz, jstring code, jboolean remove_lv) {
     mrb_state *mrb = mrb_open();
     if (mrb == NULL) {
         LOGI("mrb_open fail");

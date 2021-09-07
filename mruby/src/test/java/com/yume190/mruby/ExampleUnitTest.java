@@ -1,4 +1,4 @@
-package com.example.mruby;
+package com.yume190.mruby;
 
 import org.junit.Test;
 
